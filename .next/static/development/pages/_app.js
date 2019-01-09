@@ -1,4 +1,4 @@
-((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
+((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/_app.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js":
 /*!***********************************************************************!*\
@@ -9109,7 +9109,7 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!****************************************************!*\
   !*** multi ./node_modules/next/dist/pages/_app.js ***!
   \****************************************************/
@@ -9117,7 +9117,7 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __NEXT_REGISTER_PAGE('/_app', function() {
-module.exports = __webpack_require__(/*! F:\Users\Morphy\Documents\nextJS\nextPodcast\node_modules\next\dist\pages\_app.js */"./node_modules/next/dist/pages/_app.js");
+module.exports = __webpack_require__(/*! /home/arzion-lenovo1/Documents/Gianfranco/nextpodcast/node_modules/next/dist/pages/_app.js */"./node_modules/next/dist/pages/_app.js");
 
 return { page: module.exports.default }});
 
@@ -9134,5 +9134,5 @@ module.exports = dll_831a3634f66cb1dada0c;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]));;
+},[[1,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=_app.js.map
