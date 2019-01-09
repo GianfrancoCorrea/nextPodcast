@@ -4,8 +4,6 @@
 
 Podcast App integrated with AudioBoom API developed with Next.js
 
-[Live Demo](https://podcasts-tzfafutwzr.now.sh)
-
 ![Web Browser App Screenshot](./.readme-static/WebApp.jpg)
 
 ![Web Browser Responsive App Screenshot](./.readme-static/MobileApp.jpg)

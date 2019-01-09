@@ -1,6 +1,9 @@
 import { Link } from '../routes';
-import slug from '../helpers/slug'
+import slug from '../helpers/slug';
+
 export default class ChannelGrid extends React.Component {
+    
+
     render() {
         const { channels } = this.props
 

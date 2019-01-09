@@ -1,11 +1,16 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import { serverRenderClock } from '../store'
 import 'isomorphic-fetch';
 import Layout from '../components/Layout';
 import ChannelGrid from '../components/ChannelGrid';
 import Error from './_error'
 
-export default class extends React.Component {
-
-    static async getInitialProps({ res }) {
+class Index extends React.Component {
+    static async getInitialProps ({ reduxStore, req, res }) {
+        const isServer = !!req
+        reduxStore.dispatch(serverRenderClock(isServer))
+        
         try {
             let request = await fetch('https://api.audioboom.com/channels/recommended')
             let { body: channels } = await request.json();
@@ -14,7 +19,17 @@ export default class extends React.Component {
             res.statusCode = 503
             return { channels: null, statusCode: 503 }
         }
-    }
+      }
+    
+      componentDidMount () {
+        const { dispatch } = this.props
+     
+      }
+    
+      componentWillUnmount () {
+       
+      }
+  
     render() {
         const { channels, statusCode } = this.props
 
@@ -29,3 +44,5 @@ export default class extends React.Component {
         )
     }
 }
+
+export default connect()(Index)
