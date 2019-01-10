@@ -3,11 +3,6 @@ import fetch from 'isomorphic-fetch';
 //import 'babel-polyfill'; // la doc decia que lo importe, TODO: averiguar bien si lo necesito.
 
 export const actionTypes = {
- TICK: 'TICK',
- INCREMENT: 'INCREMENT',
- DECREMENT: 'DECREMENT',
- RESET: 'RESET',
-
  MORE_CONTENT: 'MORE_CONTENT',
 
  SELECT_CATEGORY: 'SELECT_CATEGORY',
@@ -43,22 +38,16 @@ const receiveCategory = (category, json) => {
  }
 }
 
-export const fetchCategory = category => {
- return function (dispatch) {
+export const fetchCategory = category => async dispatch => {
    // Primer envío: se actualiza el estado de la aplicación para informar
    // que la llamada al API está iniciando.
    dispatch(requestCategory(category))
-
    // devolvemos una promesa para esperar por la respuesta.
-   //TODO: cambiar /recommended por ${recommended}
-   return fetch('https://api.audioboom.com/channels/recommended')
-     .then(response => response.json())
-     .then(json =>
-
+   const response = await fetch(`https://api.audioboom.com/channels/${category}`)
+    const json = await response.json()
        // Aquí, actualizamos el estado de la aplicación con los resultados de la llamada a la API.
        dispatch(receiveCategory(category, json))
-       )
-
+       
        //TODO: captura de errores aca.
  }
-}
+

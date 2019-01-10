@@ -9,7 +9,7 @@ export default class PodcastPlayer extends React.Component {
       <div className='clip'>
         <nav>
           { onClose ?
-            <a onClick={onClose}>&lt; Volver</a>
+            <a onClick={onClose}><b>&lt; Back</b></a>
             :
             <Link route='channel' 
               params={{ slug: slug(clip.channel.title), id: clip.channel.id }} 

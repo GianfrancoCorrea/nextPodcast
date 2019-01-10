@@ -22,19 +22,21 @@ function categoryChannels (state = {
     case actionTypes.RECEIVE_CATEGORY:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.posts,
+        items: action.channels,
         lastUpdated: action.receivedAt
       })
     default:
       return state
   }
 }
+
 function channelsByCategory(state = {}, action) {
   switch (action.type) {
     case actionTypes.RECEIVE_CATEGORY:
     case actionTypes.REQUEST_CATEGORY:
       return Object.assign({}, state, {
-        [action.category]: categoryChannels(state[action.category], action)
+        Nprogress: true,
+        [action.category]: categoryChannels(state[action.category], action),
       })
     default:
       return state
