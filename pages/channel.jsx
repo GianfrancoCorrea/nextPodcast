@@ -4,8 +4,9 @@ import ChannelGrid from '../components/ChannelGrid';
 import Error from './_error'
 import PodcastListWithClick from '../components/PodcastListWithClick';
 import PodcastPlayer from '../components/podcastPlayer';
-
-export default class extends React.Component {
+import { connect } from 'react-redux';
+import {onPodcastClick, setPlaying} from '../actions';
+class Channel extends React.Component {
 
     constructor(props) {
         super(props)
@@ -45,19 +46,21 @@ export default class extends React.Component {
     openPodcast = (event, podcast) => {
         event.preventDefault();
         this.setState({
-            openPodcast: podcast
+            openPodcast: podcast,
+            minimized: false,
         })
     }
 
     closePodcast = (event) => {
         event.preventDefault()
         this.setState({
-            openPodcast: null
+            minimized: true
+
         })
     }
 
     render() {
-        const { channel, series, audioClips, statusCode } = this.props
+        const { channel, series, audioClips, statusCode, podcast } = this.props
         const { openPodcast } = this.state
 
         if( statusCode !== 200 ) {
@@ -65,9 +68,9 @@ export default class extends React.Component {
         }
 
         return (
-            <Layout title={channel.title}>
+            <Layout title={channel.title} podcast={this.props.podcast} isPlaying={this.props.isPlaying} setIsPlaying={this.props.setIsPlaying} >
                 <div className="banner" style={{ backgroundImage: `url(${channel.urls.banner_image.original})` }} />
-                {openPodcast && <PodcastPlayer clip={ openPodcast } onClose={ this.closePodcast }/>}
+               
                 <h1>{ channel.title }</h1>
                 { series.length > 0 &&
                     <div className="series">
@@ -77,7 +80,7 @@ export default class extends React.Component {
                 }
                 <div className="lastPodcasts">
                     <h2>Ultimos Podcasts</h2>
-                    <PodcastListWithClick podcasts={ audioClips } onClickPodcast={this.openPodcast}/>
+                    <PodcastListWithClick podcasts={ audioClips } onClickPodcast={this.onPodcastClick}/>
                 </div>
 
                 <style jsx>{`
@@ -105,3 +108,21 @@ export default class extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    podcast: state.toggledPodcast.podcast !== undefined ? state.toggledPodcast.podcast : undefined,
+    isPlaying: state.toggledPodcast.isPlaying
+})
+const mapDispatchToProps = dispatch => {
+    return {
+        onPodcastClick: (event, podcast) => {
+            event.preventDefault();
+            dispatch(togglePlayer(podcast))
+        },
+       setIsPlaying: () => {
+           dispatch(setPlaying())
+       }
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Channel)

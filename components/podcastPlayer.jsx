@@ -1,12 +1,32 @@
 import { Link } from '../routes'
 import slug from '../helpers/slug'
+import Audio from './Audio';
+import { Portal } from './Portal';
 
 export default class PodcastPlayer extends React.Component {
-  render() {
-    const { clip, onClose } = this.props
+  constructor(props){
+    super(props)
+  }
+  shouldComponentUpdate (nextProps) {
+    return JSON.stringify(nextProps.clip) !== JSON.stringify(this.props.clip);
+  }
 
-    return <div className="modal">
-      <div className='clip'>
+  componentWillReceiveProps(nextProps){
+    if(nextProps.clip) {
+      this.props.setIsPlaying()
+    }
+  }
+  componentDidMount(){
+    console.log('se monta')
+    
+  }
+  render() {
+    const { clip, onClose, minimized, children } = this.props
+    if (!clip || this.props.isPlaying) return null;
+    return <Portal selector='#player'>
+    <div className="">
+    {!minimized ? 
+      <div className=' clip'>
         <nav>
           { onClose ?
             <a onClick={onClose}><b>&lt; Back</b></a>
@@ -14,7 +34,7 @@ export default class PodcastPlayer extends React.Component {
             <Link route='channel' 
               params={{ slug: slug(clip.channel.title), id: clip.channel.id }} 
               prefetch>
-              <a className='close'>&lt; Volver</a>
+              <a className='close'>&lt; Back</a>
             </Link>
           }
         </nav>
@@ -23,14 +43,9 @@ export default class PodcastPlayer extends React.Component {
           <div style={{ backgroundImage: `url(${clip.urls.image || clip.channel.urls.logo_image.original})` }} />
         </picture>
 
-        <div className='player'>
-          <h3>{ clip.title }</h3>
-          <h6>{ clip.channel.title }</h6>
-          <audio controls autoPlay={true}>
-            <source src={clip.urls.high_mp3} type='audio/mpeg' />
-          </audio>
-        </div>
       </div>
+      : null}
+      {children}
 
       <style jsx>{`
         nav {
@@ -49,6 +64,7 @@ export default class PodcastPlayer extends React.Component {
           flex-direction: column;
           background: #8756ca;
           color: white;
+          z-index: 100;
         }
         picture {
           display: flex;
@@ -66,22 +82,7 @@ export default class PodcastPlayer extends React.Component {
           background-size: contain;
           background-repeat: no-repeat;
         }
-        .player {
-          padding: 30px;
-          background: rgba(0,0,0,0.3);
-          text-align: center;
-        }
-        h3 {
-          margin: 0;
-        }
-        h6 {
-          margin: 0;
-          margin-top: 1em;
-        }
-        audio {
-          margin-top: 2em;
-          width: 100%;
-        }
+
 
         .modal {
           position: fixed;
@@ -93,5 +94,6 @@ export default class PodcastPlayer extends React.Component {
         }
       `}</style>
     </div>
+    </Portal>
   }
 }

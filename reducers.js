@@ -10,6 +10,24 @@ function selectedCategory (state = 'recomended', action) {
       return state
   }
 }
+ 
+function toggledPodcast (state = {
+  isPlaying: false
+}, action) {
+  switch (action.type) {
+    case actionTypes.PODCAST_OPEN:
+      return Object.assign({}, state, {
+        podcast: action.podcast,
+      })
+      case actionTypes.SET_PLAYING:
+        return Object.assign({}, state, {
+          isPlaying: true
+        })
+    default: 
+      return state
+  }
+}
+
 function categoryChannels (state = {
   isFetching: false,
   items: []
@@ -44,6 +62,7 @@ function channelsByCategory(state = {}, action) {
 }
 const rootReducer = combineReducers({
   channelsByCategory,
-  selectedCategory
+  selectedCategory,
+  toggledPodcast
 })
 export default rootReducer

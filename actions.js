@@ -5,6 +5,8 @@ import fetch from 'isomorphic-fetch';
 export const actionTypes = {
  MORE_CONTENT: 'MORE_CONTENT',
 
+  PODCAST_OPEN: 'PODCAST_OPEN',
+  SET_PLAYING: 'SET_PLAYING',
  SELECT_CATEGORY: 'SELECT_CATEGORY',
  REQUEST_CATEGORY: 'REQUEST_CATEGORY',
  RECEIVE_CATEGORY: 'RECEIVE_CATEGORY',
@@ -12,6 +14,20 @@ export const actionTypes = {
  REQUEST_CHANNEL: 'REQUEST_CHANNEL',
  SELECT_CHANNEL: 'SELECT_CHANNEL',
  RECEIVE_CHANNEL: 'RECEIVE_CHANNEL'
+}
+
+export const setPlaying = () => {
+  return {
+    type: actionTypes.SET_PLAYING,
+    
+  }
+}
+
+export const togglePodcast = (podcast) => {
+  return {
+    type: actionTypes.PODCAST_OPEN,
+    podcast
+  }
 }
 
 

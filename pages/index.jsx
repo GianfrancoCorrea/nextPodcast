@@ -6,7 +6,8 @@ import Layout from '../components/Layout';
 import ChannelGrid from '../components/ChannelGrid';
 import Error from './_error'
 import { selectCategory, fetchCategory } from '../actions'
-
+import Audio from '../components/Audio';
+import PodcastPlayer from '../components/podcastPlayer';
 class Index extends React.Component {
     render() {
         const {  statusCode,  } = this.props
@@ -14,8 +15,9 @@ class Index extends React.Component {
             //return <Error statusCode={statusCode} />
         }
         return (
-            <Layout title="nextPodcast">
+            <Layout title="nextPodcast" podcast={this.props.podcast} isPlaying={this.props.isPlaying} >
                 <ChannelGrid {...this.props} />
+                
             </Layout>
         )
     }
@@ -24,9 +26,13 @@ const mapStateToProps = state => {
     if(state.channelsByCategory.recommended !== undefined) {
         return {
             channels: state.channelsByCategory.recommended.items,
-            isFetching: state.channelsByCategory.recommended.isFetching
+            isFetching: state.channelsByCategory.recommended.isFetching,
+            podcast: state.toggledPodcast.podcast !== undefined ? state.toggledPodcast.podcast : undefined,
+    isPlaying: state.toggledPodcast.isPlaying
+            
         }
     }
-    return {channels: [], isFetching: []}
+    return {channels: [], isFetching: [], podcast: undefined}
   }
+
 export default connect(mapStateToProps)(Index)

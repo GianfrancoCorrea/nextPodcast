@@ -1,14 +1,15 @@
 import slug from '../helpers/slug'
-
-export default class extends React.Component {
+import { connect } from 'react-redux';
+import {togglePodcast} from '../actions'
+class PodcastListWithClick extends React.Component {
   render() {
-    const { podcasts, onClickPodcast } = this.props
+    const { podcasts, onPodcastClick } = this.props
 
     return <div>
       { podcasts.map((podcast) => (
         <a href={`/${slug(podcast.channel.title)}.${podcast.channel.id}/${slug(podcast.title)}.${podcast.id}`}
           className='podcast' key={podcast.id}
-          onClick={ (event) => onClickPodcast(event, podcast) }>
+          onClick={ (event) => onPodcastClick(event, podcast) }>
           <h3>{ podcast.title }</h3>
           <div className='meta'>
             { Math.ceil(podcast.duration / 60) } minutes
@@ -40,3 +41,15 @@ export default class extends React.Component {
     </div>
   }
 }
+
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => {
+    return {
+        onPodcastClick: (event, podcast) => {
+            event.preventDefault();
+            dispatch(togglePodcast(podcast))
+        }
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PodcastListWithClick)

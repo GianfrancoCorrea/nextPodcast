@@ -2,6 +2,9 @@ import Link from 'next/link';
 import Head from 'next/head';
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import PodcastPlayer from './podcastPlayer';
+import Audio from './Audio';
+
 Router.onRouteChangeStart = (url) => {
     NProgress.start()
 }
@@ -10,7 +13,7 @@ Router.onRouteChangeError = () => NProgress.done()
 
 export default class Layout extends React.Component {
     render() {
-        const { children, title } = this.props
+        const { children, title, podcast, isPlaying, setIsPlaying } = this.props
         return <div>
             <Head>
                 <title>{title}</title>
@@ -20,6 +23,18 @@ export default class Layout extends React.Component {
                 <Link href="/"><a>nextPodcast</a></Link>
             </header>
             {children}
+           
+            
+            <PodcastPlayer isPlaying={isPlaying} clip={ podcast } setIsPlaying={setIsPlaying}> 
+                    <Audio clip={podcast} />
+                </PodcastPlayer>
+
+
+
+
+
+
+
 
             <style jsx>{`
                 header {
