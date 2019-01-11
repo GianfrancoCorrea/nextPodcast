@@ -1,31 +1,36 @@
-import React from'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 
-export default class Error extends React.Component{
-  static getInitialProps({ res, err }) {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
-    return { statusCode }
-  }
+export default class Error extends React.Component {
+    static getInitialProps({ res, err }) {
+        const { statusCode } = res || (err && err);
+        // const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+        return { statusCode };
+    }
 
-  render() {
-    const { statusCode } = this.props
+    render() {
+        const { statusCode } = this.props;
 
-    return (
-      <Layout title="Oh no :(">
-        { statusCode == 404 ?
-            <div className="message">
-                <h1>Page not found :(</h1>
-                <p><Link href="/"><a>Back home</a></Link></p>
+        return (
+            <Layout title="Oh no :(">
+                { statusCode === 404
+                    ? (
+                        <div className="message">
+                            <h1>Page not found :(</h1>
+                            <p><Link href="/"><a>Back home</a></Link></p>
 
-            </div>
-        :
-        <div className="message">
-            <h1>An error occurred :(</h1>
-            <p><Link href="/"><a>Back home</a></Link></p>
-        </div>}
+                        </div>
+                    )
+                    : (
+                        <div className="message">
+                            <h1>An error occurred :(</h1>
+                            <p><Link href="/"><a>Back home</a></Link></p>
+                        </div>
+                    )}
 
-        <style jsx>{`
+                <style jsx>
+                    {`
                 .message {
                     padding: 100px 30px;
                     text-align: center;
@@ -36,8 +41,10 @@ export default class Error extends React.Component{
                 a {
                     color: #8756ca
                 }
-        `}</style>
-      </Layout>
-    )
-  }
+        `}
+
+                </style>
+            </Layout>
+        );
+    }
 }

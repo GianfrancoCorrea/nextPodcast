@@ -1,22 +1,30 @@
-import slug from '../helpers/slug'
+import React from 'react';
+import slug from '../helpers/slug';
+import PropTypes from 'prop-types';
 
-export default class extends React.Component {
-  render() {
-    const { podcasts, onClickPodcast } = this.props
+export default function PodcastListWithClick(props) {
+    const { podcasts, onClickPodcast } = props;
 
-    return <div>
-      { podcasts.map((podcast) => (
-        <a href={`/${slug(podcast.channel.title)}.${podcast.channel.id}/${slug(podcast.title)}.${podcast.id}`}
-          className='podcast' key={podcast.id}
-          onClick={ (event) => onClickPodcast(event, podcast) }>
-          <h3>{ podcast.title }</h3>
-          <div className='meta'>
-            { Math.ceil(podcast.duration / 60) } minutes
-          </div>
-        </a>
-      )) }
+    return (
+        <div>
+            { podcasts.map(podcast => (
+                <a
+                    href={`/${slug(podcast.channel.title)}.${podcast.channel.id}/${slug(podcast.title)}.${podcast.id}`}
+                    className="podcast"
+                    key={podcast.id}
+                    onClick={event => onClickPodcast(event, podcast)}
+                >
+                    <h3>{ podcast.title }</h3>
+                    <div className="meta">
+                        { Math.ceil(podcast.duration / 60) }
+                        {' '}
+                          minutes
+                    </div>
+                </a>
+            )) }
 
-      <style jsx>{`
+            <style jsx>
+                {`
         .podcast {
           display: block;
           text-decoration: none;
@@ -36,7 +44,22 @@ export default class extends React.Component {
           margin-top: 0.5em;
           font-size: 0.8em;
         }
-      `}</style>
-    </div>
-  }
+      `}
+
+            </style>
+        </div>
+    );
 }
+
+PodcastListWithClick.propTypes = {
+    podcasts: PropTypes.PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        id: PropTypes.number,
+        duration: PropTypes.number,
+        channel: PropTypes.shape({
+            id: PropTypes.number,
+        }),
+    })).isRequired,
+    onClickPodcast: PropTypes.func.isRequired,
+};
+

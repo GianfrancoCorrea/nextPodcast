@@ -1,27 +1,31 @@
+import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import NProgress from 'nprogress'
-import Router from 'next/router'
-Router.onRouteChangeStart = (url) => {
-    NProgress.start()
-}
-Router.onRouteChangeComplete = () => NProgress.done()
-Router.onRouteChangeError = () => NProgress.done()
+import NProgress from 'nprogress';
+import Router from 'next/router';
+import PropTypes from 'prop-types';
 
-export default class Layout extends React.Component {
-    render() {
-        const { children, title } = this.props
-        return <div>
+Router.onRouteChangeStart = () => {
+    NProgress.start();
+};
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
+
+export default function Layout(props) {
+    const { children, title } = props;
+    return (
+        <div>
             <Head>
                 <title>{title}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <header>
                 <Link href="/"><a>nextPodcast</a></Link>
             </header>
             {children}
 
-            <style jsx>{`
+            <style jsx>
+                {`
                 header {
                     color: #fff;
                     background: #8756ca;
@@ -34,15 +38,21 @@ export default class Layout extends React.Component {
                     text-decoration: none;
                 }
                 
-            `}</style>
-            <style jsx global>{`
+            `}
+
+            </style>
+            <style jsx global>
+                {`
                         body{
                             background: #fafafa;
                             font-family: system-ui;
                             margin: 0;
                         }
-                `}</style>
-            <style jsx global>{`
+                `}
+
+            </style>
+            <style jsx global>
+                {`
                 /* Make clicks pass-through */
                 #nprogress {
                 pointer-events: none;
@@ -116,7 +126,17 @@ export default class Layout extends React.Component {
                 0%   { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
                 }
-            `}</style>
+            `}
+
+            </style>
         </div>
-    }
+    );
 }
+Layout.defaultProps = {
+    title: 'nextPodcast',
+};
+Layout.propTypes = {
+    children: PropTypes.node.isRequired,
+    title: PropTypes.string,
+};
+

@@ -1,22 +1,23 @@
+import React from 'react';
 import { Link } from '../routes';
 import slug from '../helpers/slug';
 import { connect } from 'react-redux';
 
 function ChannelGrid(props) {
-    
-
-        const { channels, isFetching } = props
-        const loader = <div>
-                <center><h2>nextPodcast</h2></center>
+    const { channels, isFetching } = props;
+    const loader = (
+        <div>
+            <center><h2>nextPodcast</h2></center>
             <div className="loader">
-                <div className="bar1"></div>
-                <div className="bar2"></div>
-                <div className="bar3"></div>
-                <div className="bar4"></div>
-                <div className="bar5"></div>
-                <div className="bar6"></div>
+                <div className="bar1" />
+                <div className="bar2" />
+                <div className="bar3" />
+                <div className="bar4" />
+                <div className="bar5" />
+                <div className="bar6" />
             </div>
-                <style jsx global>{`
+            <style jsx global>
+                {`
                     body, html {
                     background-color: #8756ca!important;
                     height: 100%;
@@ -101,20 +102,24 @@ function ChannelGrid(props) {
                         -webkit-transform: scaleY(1);
                     }
                     }
-                    `}</style>
-            </div>
-     
-        const channelsUI = 
-            <div className="channels">
-                {channels.map((channel, key) => (
-                    <Link route="channel" params={{ slug: slug(channel.title), id: channel.id }}  key={key} prefetch>
-                        <a className="channel"  >
-                            <img src={channel.urls.logo_image.original} alt={channel.title} />
-                            <h2>{channel.title}</h2>
-                        </a>
-                    </Link>
-                )) }
-                <style jsx>{`   
+                    `}
+
+            </style>
+        </div>
+    );
+
+    const channelsUI = (
+        <div className="channels">
+            {channels.map(channel => (
+                <Link route="channel" params={{ slug: slug(channel.title), id: channel.id }} key={channel.id} prefetch>
+                    <a className="channel">
+                        <img src={channel.urls.logo_image.original} alt={channel.title} />
+                        <h2>{channel.title}</h2>
+                    </a>
+                </Link>
+            )) }
+            <style jsx>
+                {`   
                         .channels {
                         display: grid;
                         grid-gap: 15px;
@@ -132,11 +137,13 @@ function ChannelGrid(props) {
                         box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
                         width: 100%;
                         }
-                `}</style>
-            </div>
+                `}
 
-        return !isFetching ? channelsUI : loader
-    }
+            </style>
+        </div>
+    );
 
+    return !isFetching ? channelsUI : loader;
+}
 
-export default connect()(ChannelGrid)
+export default connect()(ChannelGrid);

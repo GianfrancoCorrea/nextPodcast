@@ -1,38 +1,49 @@
-import { Link } from '../routes'
-import slug from '../helpers/slug'
+import React from 'react';
+import { Link } from '../routes';
+import slug from '../helpers/slug';
+import PropTypes from 'prop-types';
 
-export default class PodcastPlayer extends React.Component {
-  render() {
-    const { clip, onClose } = this.props
+export default function PodcastPlayer(props) {
+    const {
+        clip, onClose, children, minimized,
+    } = props;
 
-    return <div className="modal">
-      <div className='clip'>
-        <nav>
-          { onClose ?
-            <a onClick={onClose}><b>&lt; Back</b></a>
-            :
-            <Link route='channel' 
-              params={{ slug: slug(clip.channel.title), id: clip.channel.id }} 
-              prefetch>
-              <a className='close'>&lt; Volver</a>
-            </Link>
-          }
-        </nav>
+    const modalState = !minimized ? 'modal' : 'hidden';
+    return (
+        <div className={modalState}>
+            <div className="clip">
+                <nav>
+                    { onClose
+                        ? (
+                            <a onClick={onClose}>
+                                <b>
+                                    <span role="img" aria-label="arrow">⏬ </span>
+                                  Minimize
+                                </b>
 
-        <picture>
-          <div style={{ backgroundImage: `url(${clip.urls.image || clip.channel.urls.logo_image.original})` }} />
-        </picture>
+                            </a>
+                        )
+                        : (
+                            <Link
+                                route="channel"
+                                params={{ slug: slug(clip.channel.title), id: clip.channel.id }}
+                                prefetch
+                            >
+                                <a className="close">&lt; Volver</a>
+                            </Link>
+                        )
+                    }
+                </nav>
 
-        <div className='player'>
-          <h3>{ clip.title }</h3>
-          <h6>{ clip.channel.title }</h6>
-          <audio controls autoPlay={true}>
-            <source src={clip.urls.high_mp3} type='audio/mpeg' />
-          </audio>
-        </div>
-      </div>
+                <picture>
+                    <div style={{ backgroundImage: `url(${clip.urls.image || clip.channel.urls.logo_image.original})` }} />
+                </picture>
 
-      <style jsx>{`
+            </div>
+
+            {children}
+            <style jsx>
+                {`
         nav {
           background: none;
         }
@@ -49,6 +60,10 @@ export default class PodcastPlayer extends React.Component {
           flex-direction: column;
           background: #8756ca;
           color: white;
+          z-index: 100;
+        }
+        .hidden .clip {
+            display: none
         }
         picture {
           display: flex;
@@ -66,22 +81,6 @@ export default class PodcastPlayer extends React.Component {
           background-size: contain;
           background-repeat: no-repeat;
         }
-        .player {
-          padding: 30px;
-          background: rgba(0,0,0,0.3);
-          text-align: center;
-        }
-        h3 {
-          margin: 0;
-        }
-        h6 {
-          margin: 0;
-          margin-top: 1em;
-        }
-        audio {
-          margin-top: 2em;
-          width: 100%;
-        }
 
         .modal {
           position: fixed;
@@ -91,7 +90,32 @@ export default class PodcastPlayer extends React.Component {
           bottom: 0;
           z-index: 99999;
         }
-      `}</style>
-    </div>
-  }
+      `}
+
+            </style>
+        </div>
+    );
 }
+PodcastPlayer.defaultProps = {
+    onClose: null,
+    minimized: null,
+};
+PodcastPlayer.propTypes = {
+    clip: PropTypes.shape({
+        channel: PropTypes.shape({
+            id: PropTypes.number,
+            title: PropTypes.string,
+            urls: PropTypes.shape({
+                logo_image: PropTypes.shape({
+                    original: PropTypes.string,
+                }),
+                image: PropTypes.string,
+            }),
+        }),
+
+    }).isRequired,
+    onClose: PropTypes.func,
+    children: PropTypes.node.isRequired,
+    minimized: PropTypes.bool,
+};
+

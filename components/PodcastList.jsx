@@ -1,29 +1,40 @@
-import { Link } from '../routes'
-import slug from '../helpers/slug'
+import React from 'react';
+import { Link } from '../routes';
+import slug from '../helpers/slug';
+import PropTypes from 'prop-types';
 
-export default class extends React.Component {
-    render() {
-        const { podcasts } = this.props
-
-        return <div>
-            {podcasts.map((podcast) => (
-                <Link route='podcast' 
+export default function PodcastList(props) {
+    const { podcasts } = props;
+    return (
+        <div>
+            {podcasts.map(podcast => (
+                <Link
+                    route="podcast"
                     params={{
-                        slug: slug(podcast.title), id: podcast.id,
-                        slugChannel: slug(podcast.channel.title), idChannel: podcast.channel.id
+                        slug: slug(podcast.title),
+                        id: podcast.id,
+                        slugChannel: slug(podcast.channel.title),
+                        idChannel: podcast.channel.id,
                     }}
-                    prefetch key={podcast.id}>
-                    <a className='podcast'>
+                    prefetch
+                    key={podcast.id}
+                >
+                    <a className="podcast">
                         <h3>
-                            {podcast.title}</h3>
-                        <div className='meta'>
-                            {Math.ceil(podcast.duration / 60)} minutes
+                            {podcast.title}
+
+                        </h3>
+                        <div className="meta">
+                            {Math.ceil(podcast.duration / 60)}
+                            {' '}
+                            minutes
                         </div>
                     </a>
                 </Link>
             ))}
 
-            <style jsx>{`
+            <style jsx>
+                {`
           .podcast {
             display: block;
             text-decoration: none;
@@ -43,7 +54,21 @@ export default class extends React.Component {
             margin-top: 0.5em;
             font-size: 0.8em;
           }
-        `}</style>
+        `}
+
+            </style>
         </div>
-    }
+    );
 }
+
+PodcastList.propTypes = {
+    podcasts: PropTypes.PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.number,
+        id: PropTypes.number,
+        duration: PropTypes.number,
+        channel: PropTypes.shape({
+            id: PropTypes.string,
+        }),
+    })).isRequired,
+};
+
