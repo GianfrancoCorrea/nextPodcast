@@ -1,40 +1,23 @@
 {
-  "devFiles": [],
+  "devFiles": [
+    "static/development/dll/dll_667bedbbc968f50716e1.js"
+  ],
   "pages": {
     "/_app": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
-    ],
-    "/about": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
-    ],
-    "/channel": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
     "/index": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
-    ],
-    "/podcast": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
     "/": [
-      "static/runtime/webpack-42652fa8b82c329c0559.js",
-      "static/chunks/commons.f906368d095ea9ab35e7.js",
-      "static/runtime/main-c576e9594487d2875eb0.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
