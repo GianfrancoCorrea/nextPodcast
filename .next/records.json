@@ -561,19 +561,25 @@
       "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\about.js": 5,
       "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\channel.js": 6,
       "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\index.js": 7,
-      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\podcast.js": 8
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\podcast.js": 8,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\_app.js": 9,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\_error.js": 10,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\about.js": 11,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\channel.js": 12,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\index.js": 13,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\podcast.js": 14
     },
     "bySource": {},
     "usedIds": [
       0,
       1,
+      10,
+      11,
+      12,
+      13,
+      14,
       2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
+      9
     ]
   }
 }

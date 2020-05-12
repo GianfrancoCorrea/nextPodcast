@@ -101,17 +101,24 @@
       "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\channel.js": 3,
       "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\index.js": 4,
       "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\podcast.js": 5,
-      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\_document.js": 6
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\_document.js": 6,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\_app.js": 7,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\_error.js": 8,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\about.js": 9,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\channel.js": 10,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\index.js": 11,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\podcast.js": 12,
+      "static\\osHuaXAVDJH0DJNbCUvnr\\pages\\_document.js": 13
     },
     "bySource": {},
     "usedIds": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
+      10,
+      11,
+      12,
+      13,
+      7,
+      8,
+      9
     ]
   }
 }

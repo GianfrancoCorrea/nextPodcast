@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{234:function(n,o,e){__NEXT_REGISTER_PAGE("/_error",function(){return n.exports=e(32),{page:n.exports.default}})}},[[234,1,0]]]);
