@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "export": "npm run build && next export"
   },
   "author": "GianfrancoCorrea",
@@ -16,6 +16,7 @@
     "acorn": "6.0.4",
     "acorn-jsx": "5.0.1",
     "babel-eslint": "^10.0.1",
+    "cross-env": "^7.0.2",
     "eslint": "5.10.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-import-resolver-babel-module": "5.0.0-beta.1",

@@ -5706,7 +5706,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/home/arzion-lenovo1/Documents/Gianfranco/nextpodcast/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Tomas\\Desktop\\arzion\\nextPodcast\\.next");
       return error;
     }
   };
@@ -17946,7 +17946,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/arzion-lenovo1/Documents/Gianfranco/nextpodcast/node_modules/next/dist/client/next-dev */"./node_modules/next/dist/client/next-dev.js");
+module.exports = __webpack_require__(/*! C:\Users\Tomas\Desktop\arzion\nextPodcast\node_modules\next\dist\client\next-dev */"./node_modules/next/dist/client/next-dev.js");
 
 
 /***/ }),

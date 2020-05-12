@@ -88,45 +88,62 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/next/dist/pages/_document.js":
-/*!***************************************************!*\
-  !*** ./node_modules/next/dist/pages/_document.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! next/document */ "next/document")
-
-
-/***/ }),
-
-/***/ 2:
-/*!*********************************************************!*\
-  !*** multi ./node_modules/next/dist/pages/_document.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! C:\Users\Tomas\Desktop\arzion\nextPodcast\node_modules\next\dist\pages\_document.js */"./node_modules/next/dist/pages/_document.js");
-
-
-/***/ }),
-
-/***/ "next/document":
-/*!********************************!*\
-  !*** external "next/document" ***!
-  \********************************/
-/*! no static exports found */
+/***/ 0:
 /***/ (function(module, exports) {
 
-module.exports = require("next/document");
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+module.exports = require("styled-jsx/style");
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(25);
+
+
+/***/ }),
+
+/***/ 25:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return about; });
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function about() {
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "jsx-3888185877"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+    className: "jsx-3888185877"
+  }, "About nextPodcast"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+    src: "/static/platzi-logo.png",
+    alt: "platzi",
+    className: "jsx-3888185877"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+    className: "jsx-3888185877"
+  }, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum blanditiis, dolorum eum deleniti animi totam beatae repellendus quidem esse exercitationem provident quisquam eveniet odit? Maxime odio sed rerum incidunt."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    styleId: "3888185877",
+    css: ["div.jsx-3888185877{font-family:Arial;max-width:780px;margin:0 auto;}", "h1.jsx-3888185877{display:block;margin:0 auto;text-align:center;margin-bottom:1rem;}", "img.jsx-3888185877{max-width:300px;display:block;margin:0 auto;}", "p.jsx-3888185877{color:#ccc;}"]
+  }));
+}
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map

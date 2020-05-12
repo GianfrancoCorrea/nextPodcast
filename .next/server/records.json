@@ -36,7 +36,9 @@
       "node_modules/next/dist/pages/_document.js": 32,
       "external \"next/document\"": 33,
       "node_modules/next/dist/build/webpack/loaders/next-babel-loader.js??ref--4!pages/_app.jsx 15ef9f24c85159944569a0a44c62b28f": 34,
-      "node_modules/next/dist/build/webpack/loaders/next-babel-loader.js??ref--4!pages/channel.jsx 7dd24097e1288da6746a98231364dead": 35
+      "node_modules/next/dist/build/webpack/loaders/next-babel-loader.js??ref--4!pages/channel.jsx 7dd24097e1288da6746a98231364dead": 35,
+      "node_modules/next/dist/build/webpack/loaders/next-babel-loader.js??ref--4!pages/_app.jsx 05db4c34a745f894585c261164c3694f": 34,
+      "node_modules/next/dist/build/webpack/loaders/next-babel-loader.js??ref--4!pages/channel.jsx 33b5c8a17061211590099603f4c1db39": 35
     },
     "usedIds": {
       "0": 0,
@@ -92,17 +94,24 @@
       "static/~8yZKLWTDM7AJntSdZsyZ/pages/channel.js": 10,
       "static/~8yZKLWTDM7AJntSdZsyZ/pages/index.js": 11,
       "static/~8yZKLWTDM7AJntSdZsyZ/pages/podcast.js": 12,
-      "static/~8yZKLWTDM7AJntSdZsyZ/pages/_document.js": 13
+      "static/~8yZKLWTDM7AJntSdZsyZ/pages/_document.js": 13,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\_app.js": 0,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\_error.js": 1,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\about.js": 2,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\channel.js": 3,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\index.js": 4,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\podcast.js": 5,
+      "static\\RWxs8qFE6ab7r618ZOYYS\\pages\\_document.js": 6
     },
     "bySource": {},
     "usedIds": [
-      10,
-      11,
-      12,
-      13,
-      7,
-      8,
-      9
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
     ]
   }
 }
